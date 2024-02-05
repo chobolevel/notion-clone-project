@@ -5,6 +5,7 @@ import { ChevronsLeft, MenuIcon } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
+import UserItem from "./UserItem"
 
 const Navigation = () => {
   const pathname = usePathname()
@@ -71,19 +72,19 @@ const Navigation = () => {
   }
   return (
     <>
-      <aside ref={sidebarRef} className={cn("group h-full bg-secondary overflow-y-auto relative w-60 flex flex-col z-[99999] transition-all ease-in-out duration-300", isMobile && "w-0")}>
+      <aside ref={sidebarRef} className={cn("group h-full bg-secondary overflow-y-auto relative w-60 flex flex-col z-[9999] transition-all ease-in-out duration-300", isMobile && "w-0")}>
         <div onClick={collapse} role="button" className={cn("h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover:opacity-100", isMobile && "opacity-100")}>
           <ChevronsLeft className="w-6 h-6" />
         </div>
         <div>
-          <p>Action</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents</p>
         </div>
         <div onMouseDown={handleMouseDown} onClick={resetWidth} className="opacity-0 group-hover:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" />
       </aside>
-      <div ref={navbarRef} className={cn("absolute top-0 left-60 z-[99999] w-[calc(100% - 240px)] transition-all ease-in-out", isMobile && "left-0 w-full")}>
+      <div ref={navbarRef} className={cn("absolute top-0 left-60 z-[9999] w-[calc(100% - 240px)] transition-all ease-in-out", isMobile && "left-0 w-full")}>
         <nav className="bg-transparent px-4 py-2 w-full">
           {isCollapsed && <MenuIcon onClick={resetWidth} role="button" className="h-6 w-6 text-muted-foreground transition-all duration-300" />}
         </nav>
