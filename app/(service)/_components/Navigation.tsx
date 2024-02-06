@@ -7,14 +7,13 @@ import { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
 import UserItem from "./UserItem"
 import { api } from "@/convex/_generated/api";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import Item from "./Item"
 import { toast } from "sonner"
 
 const Navigation = () => {
   const pathname = usePathname()
   const isMobile = useMediaQuery("(max-width: 768px)")
-  const documents = useQuery(api.documents.get)
   const create = useMutation(api.documents.create)
   const isResizeingRef = useRef(false)
   const sidebarRef = useRef<ElementRef<"aside">>(null)
@@ -110,9 +109,7 @@ const Navigation = () => {
           />
         </div>
         <div className="mt-4">
-          {documents?.map((document) => (
-            <p key={document._id}>{document.title}</p>
-          ))}
+          documents
         </div>
         <div onMouseDown={handleMouseDown} onClick={resetWidth} className="opacity-0 group-hover:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" />
       </aside>
