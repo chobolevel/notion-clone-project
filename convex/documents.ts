@@ -23,3 +23,14 @@ export const create = mutation({
     return document
   }
 })
+
+export const get = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity()
+    if(!identity) {
+      throw new Error("Not Authenticated User")
+    }
+    const documents = await ctx.db.query("documents").collect()
+    return documents
+  }
+})
