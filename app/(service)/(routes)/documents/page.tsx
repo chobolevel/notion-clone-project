@@ -14,7 +14,7 @@ const DocumentPage = () => {
   const handleCreate = () => {
     const promise = create({ title: "test" })
     toast.promise(promise, {
-      loading: "Create a new document...",
+      loading: "Creating a new document...",
       success: "New Document Created!",
       error: "Failed to create a new document..."
     })
